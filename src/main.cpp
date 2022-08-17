@@ -7,10 +7,8 @@
 #include <QSplashScreen>
 
 
-#if defined(Q_OS_WASM) && QT_VERSION < QT_VERSION_CHECK(5, 14, 0)
-#error You must use Qt 5.14 or newer // Becouse of the file dialogs
-#elif QT_VERSION < QT_VERSION_CHECK(5, 10, 0)
-#error You must use Qt 5.10 or newer // Because of QGuiApplication::screenAt
+#if !(QT_VERSION >= QT_VERSION_CHECK(5, 15, 0) && QT_VERSION <= QT_VERSION_CHECK(6, 0, 0) || QT_VERSION >= QT_VERSION_CHECK(6, 4, 0))
+#error Only Qt versions 5.15 and greater equal to 6.4 are supported
 #endif
 
 
@@ -18,11 +16,6 @@ int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
     a.setApplicationVersion(QStringLiteral(APP_VERSION));
-
-    QSplashScreen splash;
-    splash.setWindowFlag(Qt::WindowStaysOnTopHint);
-    splash.show();
-    a.processEvents();
 
     static constexpr QChar underscore[1] = {
         QLatin1Char('_')
@@ -44,9 +37,6 @@ int main(int argc, char *argv[])
         a.installTranslator(&translator);
 
     MainWindow w;
-
-    splash.finish(&w);
-
     w.show();
 
     return a.exec();

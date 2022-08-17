@@ -71,7 +71,6 @@ IF(WIN32)
     SET(INTL_LDFLAGS -lintl)
 ENDIF(WIN32)
 
-
 target_include_directories(speech PRIVATE ${CMAKE_SOURCE_DIR}/src)
 target_link_libraries(speech PRIVATE Qt${QT_VERSION_MAJOR}::Widgets Qt${QT_VERSION_MAJOR}::TextToSpeech ${INTL_LDFLAGS})
 

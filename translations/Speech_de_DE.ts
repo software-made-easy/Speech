@@ -4,64 +4,76 @@
 <context>
     <name>MainWindow</name>
     <message>
-        <source>MainWindow</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Engine</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>Pitch:</source>
-        <translation type="unfinished"></translation>
+        <translation>Tonhöhe:</translation>
     </message>
     <message>
         <source>&amp;Language:</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Sprache:</translation>
     </message>
     <message>
         <source>Voice name:</source>
-        <translation type="unfinished"></translation>
+        <translation>Name der Stimme:</translation>
     </message>
     <message>
         <source>Rate:</source>
-        <translation type="unfinished"></translation>
+        <translation>Sprachrate:</translation>
     </message>
     <message>
         <source>Volume:</source>
-        <translation type="unfinished"></translation>
+        <translation>Lautstärke:</translation>
     </message>
     <message>
         <source>Speak</source>
-        <translation type="unfinished"></translation>
+        <translation>Sprechen</translation>
     </message>
     <message>
         <source>Pause</source>
-        <translation type="unfinished"></translation>
+        <translation>Pausieren</translation>
     </message>
     <message>
         <source>Resume</source>
-        <translation type="unfinished"></translation>
+        <translation>Fortsetzen</translation>
     </message>
     <message>
         <source>Stop</source>
-        <translation type="unfinished"></translation>
+        <translation>Stopp</translation>
     </message>
     <message>
         <source>Speech started...</source>
-        <translation type="unfinished"></translation>
+        <translation>Rede begonnen...</translation>
     </message>
     <message>
         <source>Speech stopped...</source>
-        <translation type="unfinished"></translation>
+        <translation>Rede beendet...</translation>
     </message>
     <message>
         <source>Speech paused...</source>
-        <translation type="unfinished"></translation>
+        <translation>Rede pausiert...</translation>
     </message>
     <message>
         <source>Speech error!</source>
-        <translation type="unfinished"></translation>
+        <translation>Sprechfehler!</translation>
+    </message>
+    <message>
+        <source>Speech</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Default</source>
+        <translation>Standart</translation>
+    </message>
+    <message>
+        <source>Male</source>
+        <translation>Mänlich</translation>
+    </message>
+    <message>
+        <source>Female</source>
+        <translation>Weiblich</translation>
     </message>
 </context>
 </TS>
