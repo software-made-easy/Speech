@@ -1,9 +1,9 @@
 #include "ui_mainwindow.h"
 #include "mainwindow.h"
 
-#include <QTimer>
 #include <QDebug>
 #include <QShortcut>
+#include <QTimer>
 
 
 #if QT_VERSION >= QT_VERSION_CHECK(6, 2, 0)
@@ -15,12 +15,12 @@
 #define QTEXTTOSPEECH_ERROR QTextToSpeech::Error
 #define WORD QTextToSpeech::BoundaryHint::Word
 #define IMMEDIATE QTextToSpeech::BoundaryHint::Immediate
-#define DEFAULD QTextToSpeech::BoundaryHint::Default
+#define DEFAULT QTextToSpeech::BoundaryHint::Default
 #else
 #define QTEXTTOSPEECH_ERROR QTextToSpeech::BackendError
 #define WORD
 #define IMMEDIATE
-#define DEFAULD
+#define DEFAULT
 #endif
 
 
@@ -44,7 +44,7 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->resumeButton, &QPushButton::pressed, this,
             &MainWindow::resume);
 
-    QShortcut *shortCut = new QShortcut(this);
+    auto *shortCut = new QShortcut(this);
     shortCut->setKey(QKeySequence(QKeySequence::Quit));
     connect(shortCut, &QShortcut::activated, qApp, &QApplication::closeAllWindows);
 
@@ -67,7 +67,7 @@ void MainWindow::speak()
     Q_ASSERT(speech);
 
     if (speech->state() == QTextToSpeech::Speaking)
-        speech->stop(DEFAULD);
+        speech->stop(DEFAULT);
 
     const QString text = ui->plainTextEdit->toPlainText();
     qInfo() << __func__ << text;
@@ -80,14 +80,14 @@ void MainWindow::stop()
 {
     qInfo() << __func__;
     Q_ASSERT(speech);
-    speech->stop(DEFAULD);
+    speech->stop(DEFAULT);
 }
 
 void MainWindow::pause()
 {
     qInfo() << __func__;
     Q_ASSERT(speech);
-    speech->pause(DEFAULD);
+    speech->pause(DEFAULT);
 }
 
 void MainWindow::resume()
@@ -180,8 +180,8 @@ void MainWindow::engineSelected(int index)
     QLocale current = speech->locale();
 
     for (const QLocale &locale : locales) {
-        ui->language->addItem(locale.nativeLanguageName() + QLatin1String(" (") +
-                              COUNTRY(locale) + QChar(')'),
+        ui->language->addItem(locale.nativeLanguageName() + QStringLiteral(" (") +
+                              COUNTRY(locale) + QChar(u')'),
                               locale);
         if (locale.name() == current.name())
             current = locale;
@@ -245,7 +245,7 @@ void MainWindow::localeChanged(const QLocale &locale)
         if (voiceName.startsWith(langName)) {
             voiceName.remove(0, langName.length());
 
-            if (voiceName.startsWith(QChar('+')))
+            if (voiceName.startsWith(QChar(u'+')))
                 voiceName.remove(0, 1);
         }
 

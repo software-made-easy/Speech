@@ -74,7 +74,12 @@ ENDIF(WIN32)
 target_include_directories(speech PRIVATE ${CMAKE_SOURCE_DIR}/src)
 target_link_libraries(speech PRIVATE Qt${QT_VERSION_MAJOR}::Widgets Qt${QT_VERSION_MAJOR}::TextToSpeech ${INTL_LDFLAGS})
 
-target_compile_definitions(speech PUBLIC APP_VERSION="${PROJECT_VERSION}" QT_DISABLE_DEPRECATED_BEFORE=0x051208 CHECK_MARKDOWN)
+target_compile_definitions(speech PUBLIC
+    APP_VERSION="${PROJECT_VERSION}"
+    QT_DISABLE_DEPRECATED_BEFORE=0x051208
+    CHECK_MARKDOWN
+    QT_USE_QSTRINGBUILDER
+)
 
 set_target_properties(speech PROPERTIES
     MACOSX_BUNDLE_GUI_IDENTIFIER org.qtproject.speech

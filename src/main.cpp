@@ -1,10 +1,10 @@
 #include "mainwindow.h"
 
 #include <QApplication>
-#include <QLocale>
-#include <QTranslator>
 #include <QCommandLineParser>
+#include <QLocale>
 #include <QSplashScreen>
+#include <QTranslator>
 
 
 #if !(QT_VERSION >= QT_VERSION_CHECK(5, 15, 0) && QT_VERSION <= QT_VERSION_CHECK(6, 0, 0) || QT_VERSION >= QT_VERSION_CHECK(6, 4, 0))
@@ -15,7 +15,7 @@
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-    a.setApplicationVersion(QStringLiteral(APP_VERSION));
+    QApplication::setApplicationVersion(QStringLiteral(APP_VERSION));
 
     static constexpr QChar underscore[1] = {
         QLatin1Char('_')
@@ -28,16 +28,16 @@ int main(int argc, char *argv[])
                           QString::fromRawData(underscore, 1),
                           QStringLiteral(
                               ":/qtTranslations/")))
-        a.installTranslator(&qtTranslator);
+        QApplication::installTranslator(&qtTranslator);
 
     // try to load translation for current locale from resource file
     if (translator.load(QLocale::system(), QStringLiteral("Speech"),
                         QString::fromRawData(underscore, 1),
                         QStringLiteral(":/translations")))
-        a.installTranslator(&translator);
+        QApplication::installTranslator(&translator);
 
     MainWindow w;
     w.show();
 
-    return a.exec();
+    return QApplication::exec();
 }
